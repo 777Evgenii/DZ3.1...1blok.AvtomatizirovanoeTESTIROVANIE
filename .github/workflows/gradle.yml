@@ -20,6 +20,16 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+
+#    - name: Remove default Chromium
+#      run: sudo apt purge chromium-browser
+    - name: Install a new Chromium
+      run: sudo apt install -y chromium-browser
+    - name: Install a ChromeDriver
+      run: apt install -y install chromium-chromedriver
+    - name: Installed package list
+      run: apt list --installed
+
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -31,9 +41,3 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew test --info
-    - name: Installed package list
-      run: apt list --installed
-    - name: Remove default Chromium
-      run: sudo apt purge chromium-browser
-    - name: Install a new Chromium
-      run: sudo apt install -y chromium-browser
