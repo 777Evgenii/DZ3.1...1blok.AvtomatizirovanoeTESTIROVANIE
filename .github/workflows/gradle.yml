@@ -23,8 +23,9 @@ jobs:
 
     - uses: browser-actions/setup-chrome@v1
     - run: chrome --version
+    - uses: actions/checkout@v2
     - uses: nanasess/setup-chromedriver@v2
-    - run: /usr/local/share/chrome_driver --version
+    - run: chromedriver --version
 
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
